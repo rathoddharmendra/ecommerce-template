@@ -8,7 +8,7 @@ const renderBadge = () => {
 const listenToAdd = (buttons) => {
   buttons.forEach((button) => {
     button.addEventListener('click', (event) => {
-      const { id, name, price, location } = event.currentTarget.dataset
+      const { id, name, price, location, description } = event.currentTarget.dataset
       if (cartLS.exists(id)) {
         cartLS.quantity(id, 1)
       } else {
@@ -17,7 +17,8 @@ const listenToAdd = (buttons) => {
       dataLayer.push({
         event: 'addToCart',
         item: { id, name, price },
-        location: location
+        location: location,
+        description: description
       })
     })
   })
